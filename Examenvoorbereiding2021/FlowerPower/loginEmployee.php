@@ -20,7 +20,7 @@ body {
 }
 
 .uppernav {
-  height: 100px;
+  height: 150px;
   width: 100%;
   position: fixed;
   font-family: cursive;
@@ -30,8 +30,8 @@ body {
   margin-left: 180px;
 }
 
-.uppernav h2 {
-  padding: 15px 0 30px 33%;
+.uppernav h1 {
+  padding: 30px 0 0 33%;
   color: #8BDAD9;
 }
 
@@ -51,7 +51,7 @@ body {
 .body {
   margin-left: 185px;
   font-size: 28px;
-  padding: 100px 0px;
+  padding: 150px 0px;
   font-family: cursive;
   color: white;
 }
@@ -87,7 +87,7 @@ body {
 </head>
 <body>
   <div class="wrapper">
-    <form method="POST" class="loginForm">       
+    <form method="POST" class="loginForm" action="medewerker.php">       
       <h2 class="form-signin-heading">Werknemer login</h2>
       <input type="gebruikersnaam" class="formGebruikersnaam" name="gebruikersnaam" placeholder="Gebruikersnaam" required autofocus /><br><br>
       <input type="password" class="formPassword" name="password" placeholder="Password" required=""/><br><br>
@@ -96,14 +96,14 @@ body {
   </div>
 
 <div class="sidenav">
-  <a href="index.php"><img src="bloemboeket.png" width="180" height="180"></a>
+  <a href="index.php"><img src="bloem.png" width="165" height="165"></a>
   <a href="loginEmployee.php">Inloggen medewerkers</a>
   <a href="loginCustomer.php">Inloggen klanten</a>
   <a href="contact.php">Contactpagina</a>
   <a href="register.php">Registreren</a>
 </div>
 <div class="uppernav">
-  <h2>Flower Power</h2>
+  <h1>Flower Power</h1>
 </div>
 
 <div class="body">
@@ -112,34 +112,3 @@ body {
    
 </body>
 </html>
-
-
-
-<?php
-
-include 'database.php';
-$obj = new database();
-$obj->insertEmployeeUser('sameer', 'd4');
-
-
-
-if(isset($_POST['submit'])){
-
-    $fieldnames = ['username', 'password'];
-    $error = false;
-
-    foreach($fieldnames as $fieldname){
-        if(!isset($_POST[$fieldname]) || empty($_POST[$fieldname])){
-            $error = true; 
-        }
-
-    }
-
-    if(!$error){
-        //yurr
-    }else{
-        //do something
-    }
-}
-
-?>

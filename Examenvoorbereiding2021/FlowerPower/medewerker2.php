@@ -86,21 +86,13 @@ body {
 </style>
 </head>
 <body>
-  <div class="wrapper">
-    <form method="POST" class="loginForm" action="klant.php">       
-      <h2 class="form-signin-heading">&nbsp&nbsp&nbsp&nbsp&nbspKlant login</h2>
-      <input type="gebruikersnaam" class="formGebruikersnaam" name="gebruikersnaam" placeholder="Gebruikersnaam" required autofocus /><br><br>
-      <input type="password" class="formPassword" name="password" placeholder="Password" required=""/><br><br>
-      <button class="button" type="submit">Login</button>   
-    </form>
-  </div>
+
 
 <div class="sidenav">
-  <a href="index.php"><img src="bloem.png" width="165" height="165"></a>
-  <a href="loginEmployee.php">Inloggen medewerkers</a>
-  <a href="loginCustomer.php">Inloggen klanten</a>
-  <a href="contact.php">Contactpagina</a>
-  <a href="register.php">Registreren</a>
+  <a href="medewerker2.php"><img src="bloem.png" width="165" height="165"></a>
+  <a href="overzicht_artikelen.php">Overzicht artikelen</a>
+  <a href="overzicht_medewerker.php">Overzicht medewerker</a>
+  <a href="#">Lijst bestellingen &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp per winkel</a>
 </div>
 <div class="uppernav">
   <h1>Flower Power</h1>

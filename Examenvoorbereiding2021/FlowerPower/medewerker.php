@@ -1,0 +1,22 @@
+<?php
+
+include "database.php";
+
+$gebruikersnaam = $_POST["gebruikersnaam"];
+$wachtwoord = $_POST["password"];
+
+$myConn = new DB;
+
+$query = "SELECT * FROM medewerker WHERE gebruikersnaam = '$gebruikersnaam' AND wachtwoord = '$wachtwoord'";
+
+$result = $myConn->executeSQL($query);
+
+gettype($result);
+
+if (!empty($result)) {
+  include 'medewerker2.php';   
+} else {
+    echo "<br> Invalid login! <br>";
+}
+
+?>

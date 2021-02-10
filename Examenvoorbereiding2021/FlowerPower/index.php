@@ -15,7 +15,7 @@ body {
 }
 
 .uppernav {
-  height: 100px;
+  height: 150px;
   width: 100%;
   position: fixed;
   font-family: cursive;
@@ -26,7 +26,7 @@ body {
 }
 
 .uppernav h1 {
-  padding: 5px 0 30px 33%;
+  padding: 30px 0 0 33%;
   color: #8BDAD9;
 }
 
@@ -46,7 +46,7 @@ body {
 .body {
   margin-left: 185px;
   font-size: 28px;
-  padding: 100px 0px;
+  padding: 150px 0px;
   font-family: cursive;
   color: white;
 }
@@ -56,7 +56,7 @@ body {
 <body>
 
 <div class="sidenav">
-  <a href="index.php"><img src="bloemboeket.png" width="180" height="180"></a>
+  <a href="index.php"><img src="bloem.png" width="165" height="165"></a>
   <a href="loginEmployee.php">Inloggen medewerkers</a>
   <a href="loginCustomer.php">Inloggen klanten</a>
   <a href="contact.php">Contactpagina</a>

@@ -1,49 +1,37 @@
 <?php
 
-class database {
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "");
+define("DB_NAME", "flowerpower");
 
-    private $host;
-    private $dbh;
-    private $user;
-    private $pass;
-    private $db;
+class DB {
+    protected $dbh;
+    protected $stmt;
+    protected $resultSet;
 
-    function __construct(){
-        $this->host = 'localhost';
-        $this->user = 'root';
-        $this->pass = '';
-        $this->db = 'flowerpower';
-
-        try{
-            $dsn = "mysql:host=$this->host;dbname=$this->db";
-            $this->dbh = new PDO($dsn, $this->user, $this->pass);
-        }catch(PDOException $e){
-            die("Unable to connect: " . $e->getMessage());
-
-        }
+    public function __construct(){
+        $this->dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
+        $this->resultSet = [];
     }
 
-        function insertCustomerUser($gebruikersnaam, $wachtwoord){
-            $sql = "INSERT INTO klant(klantcode, gebruikersnaam, wachtwoord) VALUES (:id, :username, :password)"; 
+    public function executeSQL($query){
+        $this->stmt = $this->dbh->prepare($query);
+        $result = $this->stmt->execute();
 
-            $stmt = $this->dbh->prepare($sql);
-            $stmt->execute([
-                'id'=>NULL,
-                'username'=>$username,
-                'password'=>password_hash($password, PASSWORD_DEFAULT)
-            ]);
+        if (!$result) {
+            die('<pre>Oops, Error execute query ' . $query . '</pre><br><pre>' . 'Result code: ' . $result . '</pre>');
+        }   
+        
+        $row = $this->stmt->fetchAll();
+
+        if(!empty($row)){
+            $this->resultSet = $row;
+            return $this->resultSet;
         }
 
-        function insertEmployeeUser($gebruikersnaam, $wachtwoord){
-            $sql = "INSERT INTO medewerker(medewerkerscode, gebruikersnaam, wachtwoord) VALUES (:id, :username, :password)"; 
-
-            $stmt = $this->dbh->prepare($sql);
-            $stmt->execute([
-                'id'=>NULL,
-                'username'=>$username,
-                'password'=>password_hash($password, PASSWORD_DEFAULT)
-            ]);
-        }
+        return $this->resultSet;
+    }
 }
 
 ?>
