@@ -1,94 +1,12 @@
 <html>
 <head>
-<style>
-
-html {
-  overflow: hidden;
-}
-
-body {
-  background-image: url('bloemenwinkel.png');
-}
-
-.sidenav {
-  height: 100%;
-  width: 180px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #726FAB;
-}
-
-.uppernav {
-  height: 150px;
-  width: 100%;
-  position: fixed;
-  font-family: cursive;
-  top: 0;
-  left: 0;
-  background-color: #726FAB;
-  margin-left: 180px;
-}
-
-.uppernav h1 {
-  padding: 30px 0 0 33%;
-  color: #8BDAD9;
-}
-
-.sidenav a {
-  padding: 5px 0 30px 8px;
-  text-decoration: none;
-  font-family: cursive;
-  font-size: 15px;
-  color: #8BDAD9;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #FFFFFF;
-}
-
-.body {
-  margin-left: 185px;
-  font-size: 28px;
-  padding: 150px 0px;
-  font-family: cursive;
-  color: white;
-}
-
-.wrapper {  
-  margin-top: 300px;
-}
-
-.loginForm {
-  max-width: 180px;
-  padding: 10px 40px 40px;
-  margin: 0 auto;
-  background-color: #726FAB;
-  border: 1px solid rgba(0,0,0,0.1);  
-}
-
-.button {
-  padding: 5px 62px 5px;
-  margin-left: 10px;
-}
-
-.formGebruikersnaam {
-  padding: 0px 0px 0px;
-  margin-left: 10px;
-}
-
-.formPassword {
-  padding: 0px 0px 0px;
-  margin-left: 10px;
-}
-
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div class="wrapper">
-    <form method="POST" class="loginForm" action="klant.php">       
-      <h2 class="form-signin-heading">&nbsp&nbsp&nbsp&nbsp&nbspKlant login</h2>
+
+	<div class="wrapper">
+    <form method="POST" class="loginForm" action="klant.php">
       <input type="gebruikersnaam" class="formGebruikersnaam" name="gebruikersnaam" placeholder="Gebruikersnaam" required autofocus /><br><br>
       <input type="password" class="formPassword" name="password" placeholder="Password" required=""/><br><br>
       <button class="button" type="submit">Login</button>   
@@ -96,19 +14,42 @@ body {
   </div>
 
 <div class="sidenav">
-  <a href="index.php"><img src="bloem.png" width="165" height="165"></a>
+  <a href="index.php"><img src="bloem.png" width="125" height="125"></a>
   <a href="loginEmployee.php">Inloggen medewerkers</a>
   <a href="loginCustomer.php">Inloggen klanten</a>
   <a href="contact.php">Contactpagina</a>
   <a href="register.php">Registreren</a>
 </div>
+
 <div class="uppernav">
   <h1>Flower Power</h1>
 </div>
 
 <div class="body">
-
+  
 </div>
    
 </body>
 </html>
+
+<?php
+include "database.php";
+
+$gebruikersnaam = $_POST["gebruikersnaam"];
+$wachtwoord = $_POST["password"];
+
+$myConn = new DB;
+
+$query = "SELECT * FROM klant WHERE gebruikersnaam = '$gebruikersnaam' AND wachtwoord = '$wachtwoord'";
+
+$result = $myConn->executeSQL($query);
+
+gettype($result);
+
+if (!empty($result)) {
+  include 'medewerker2.php';   
+} else {
+    echo "<br> Invalid login! <br>";
+}
+
+?>

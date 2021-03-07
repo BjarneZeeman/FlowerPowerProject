@@ -1,5 +1,4 @@
 <?php
-
 include "database.php";
 
 $gebruikersnaam = $_POST["gebruikersnaam"];
@@ -14,9 +13,8 @@ $result = $myConn->executeSQL($query);
 gettype($result);
 
 if (!empty($result)) {
-  include 'medewerker2.php';   
+  include 'klant2.php';   
 } else {
     echo "<br> Invalid login! <br>";
 }
-
 ?>

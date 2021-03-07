@@ -1,12 +1,47 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>artikelen</title>
+    </head>
+    <body>
 
-?>
+        <?php  
+        include 'databaseArtikel.php';
+        $db = new database();
+        $artikelen = $db->select("SELECT * FROM artikel", []);
 
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+        $columns = array_keys($artikelen[0]);
+        $row_data = array_values($artikelen);
+        print_r($row_data);
+        
+        ?>
+        <table>
+            <tr>
+                <?php
+                    foreach($columns as $column){
+                        echo "<td><strong>$column</strong></td>";
+                    }
+                ?>
+                <th colspan="2">action</th>
+            </tr>
+            <?php  
+                foreach($row_data as $rows){
+                    $artikelcode = $rows['artikelcode'];
+                    echo "<tr>";
+                    foreach($rows as $data){
+                        echo "<td>$data</td>";
+                    }
+                    echo "<td>";
+                    echo "<a href=edit_artikel.php?artikel_id=$artikelcode>Edit</a>";
+                    echo "</td>";
+                    echo "<tr>";
+                }
 
-</body>
+
+                // [['leukeitle']=>['winkelcode'=>1,'title'=>'something'], [1]=>['winkelcode'=>1,'title'=>'something']]
+            ?>
+        </table>
+        <a href="http://"></a>
+    </body>
 </html>

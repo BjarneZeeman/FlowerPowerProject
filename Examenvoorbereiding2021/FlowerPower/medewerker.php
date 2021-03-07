@@ -1,5 +1,4 @@
 <?php
-
 include "database.php";
 
 $gebruikersnaam = $_POST["gebruikersnaam"];
